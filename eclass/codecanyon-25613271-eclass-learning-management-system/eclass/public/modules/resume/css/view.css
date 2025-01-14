@@ -1,0 +1,88 @@
+/* View.css */
+
+.title {
+  margin-bottom: 5px;
+}
+.p-color {
+  margin-bottom: 5px;
+  font-size: 13px;
+  color: #4d4d4d;
+
+}
+
+.job-image {
+  height: 80px;
+  width: 80px;
+  float: right;
+  border-radius: 6px;
+}
+
+.date-color {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 20px;
+}
+.date-color svg.feather {
+  color: #28A745;
+}
+.requirements {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 20px;
+}
+.applicants {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 20px;
+}
+.apply-button {
+  position: relative;
+  top: 47px;
+  height: 40px;
+  padding-block-start: 2px;
+  padding-block-end: 2px;
+}
+
+.apply-button1 {
+  position: relative;
+  top: 35px;
+  height: 54px;
+  padding-block-start: 2px;
+  padding-block-end: 2px;
+}
+
+.apply-button2 {
+  position: relative;
+  top: 62px;
+  padding: 5px 10px;
+  background-color: var(--text-blue-color);
+}
+
+.s-color {
+  color: #a6a6a6;
+}
+
+.modal-dialog {
+  max-width: 500px !important;
+}
+
+.company-image {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+.job-find-view-main-block {
+  padding: 80px 0;
+}
+.card {
+  border-color: var(--background-grey-bg-color);
+  background-color: var(--background-grey-bg-color);
+  border-radius: 6px;
+}
+.job-find-view-main-block svg.feather {
+  margin: 0 10px 0 0;
+}
+.job-find-view-main-block .fa-money {
+  color: #ff7350 !important;
+  font-size: 16px;
+}

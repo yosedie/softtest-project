@@ -1,0 +1,121 @@
+.back {
+  background-color: #F6F7FC;
+  border-color: white;
+}
+
+.bord {
+  background-color: white;
+  border-color: #bbdbe7;
+  transition: 0.5s;
+
+}
+
+.blog-home-main-block {
+  height: 100px;
+  padding: 22px 22px;
+  font-size: 40px;
+  color: white;
+}
+
+.name {
+  font-size: 25px;
+}
+
+.title {
+  margin-bottom: 5px;
+}
+
+.back {
+  background-color: #F6F7FC;
+  border-color: white;
+}
+
+.top {
+  border-color: white;
+}
+
+.button a:hover {
+  color: var(--text-blue-color);
+  background-color: #F6F7FC;
+  border-left: 3px solid var(--text-blue-color);
+}
+
+.p-color {
+  margin-bottom: 5px;
+  font-size: 13px;
+  color: #4d4d4d;
+}
+
+.button a {
+  color: #716E6E;
+  padding: 28px 0 15px;
+
+}
+
+#size {
+  padding-block-start: 2px;
+  padding-block-end: 2px;
+  height: 42px;
+}
+
+.card {
+  border-color: #e4f4fa;
+  transition: 0.3s;
+
+}
+
+.job1-image {
+  height: 150px;
+  width: 150px;
+}
+
+.date-color {
+  background-color: #f2f2f2;
+  padding: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 3px;
+}
+
+.apply-button {
+  position: relative;
+  top: 50px;
+  height: 40px;
+  padding-block-start: 2px;
+  padding-block-end: 2px;
+}
+
+.delete-color {
+  background-color: #ed684a;
+  border-color: #d84012;
+
+}
+
+.delete-color:hover {
+  background-color: #fa4700;
+  border-color: #e05924;
+
+}
+
+.modal-dialog {
+  max-width: 300px !important;
+}
+
+.edit_button {
+  background-color: rgb(128, 211, 193);
+  border-color: rgb(128, 211, 193);
+
+}
+
+.edit_button:hover {
+  background-color: rgb(128, 211, 193);
+  border-color: rgb(128, 211, 193);
+}
+
+.download-button {
+  font-size: 25px;
+}
+
+.modal-dialog {
+  max-width: 750px !important;
+}

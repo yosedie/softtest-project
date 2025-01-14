@@ -1,0 +1,84 @@
+/** edit.css **/
+
+.back {
+  background-color: #F6F7FC;
+  border-color: white;
+}
+
+.bord {
+  background-color: white;
+  border-color: #bbdbe7;
+  transition: 0.5s;
+}
+
+.blog-home-main-block {
+  height: 100px;
+  padding: 35px 0;
+  font-size: 40px;
+  color: white;
+  background-color: #032E3F;
+  background-position: 50% 0;
+}
+
+.blog-home-main-block .name {
+  font-size: 20px;
+}
+.resume-edit-page .resume-edit-sidebar {
+  background-color: #ff7350;
+  color: #fff;
+  border-color: #ff7350;
+}
+.resume-edit-page .form-control {
+  padding-left: 15px;
+  transition: .3s;
+  border-radius: 10px;
+  border: 1px solid #FFF;
+  height: calc(3em + 0.55rem + 2px);
+  background-color: #FFF;
+}
+.resume-edit-page .custom-file {
+  display: flex;
+}
+.resume-edit-page .custom-file-input {
+  padding: 12px 15px;
+  transition: .3s;
+  border-radius: 10px 0 0 10px;
+  border: 1px solid #FFF;
+  height: calc(3em + 0.55rem + 2px);
+  background-color: #FFF;
+  color: #000;
+}
+.resume-edit-page .custom-file-label {
+  border-radius: 0 10px 10px 0;
+  background-color: #125875;
+  padding: 15px 10px;
+  color: #FFF;
+}
+.resume-edit-page .bg-white input {
+  padding-left: 15px;
+  transition: .3s;
+  border-radius: 10px;
+  border: 1px solid #e4f4fa;
+  height: calc(3em + 0.55rem + 2px);
+  background-color: #FFF;
+}
+.resume-edit-page .bg-white .text-danger {
+  color: #ff7350 !important;
+}
+.resume-edit-page .bg-white textarea {
+  padding-left: 15px;
+  transition: .3s;
+  border-radius: 10px;
+  border: 1px solid #e4f4fa;
+  height: calc(3em + 0.55rem + 2px);
+  background-color: #FFF;
+}
+.resume-edit-page .btn {
+  padding: 20px 30px !important;
+  font-size: 20px;
+  transition: .3s;
+  border-radius: 10px;
+  height: calc(2.4em + 0.55rem + 2px);
+  background-color: #FF7350 !important;
+  border: 1px solid #FF7350 !important;
+}

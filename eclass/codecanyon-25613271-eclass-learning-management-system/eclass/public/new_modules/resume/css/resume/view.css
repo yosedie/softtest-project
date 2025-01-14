@@ -1,0 +1,34 @@
+/** view.css **/
+.back {
+  background-color: #F6F7FC;
+  border-color: white;
+}
+
+.bord {
+  background-color: white;
+  border-color: #bbdbe7;
+  transition: 0.5s;
+
+}
+
+.blog-home-main-block {
+  height: 100px;
+  padding: 35px 0;
+  font-size: 40px;
+  color: white;
+  background-color: #032E3F;
+}
+
+.blog-home-main-block .name {
+  font-size: 25px;
+}
+
+.back .card .bg-info {
+  background-color: #125875 !important;
+}
+.back .card .text-info {
+  color: #125875 !important;
+}
+.back .card .text-primary {
+  color: #ff7350 !important;
+}

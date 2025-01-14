@@ -1,0 +1,82 @@
+/* View.css */
+
+.title {
+  margin-bottom: 5px;
+}
+
+.back {
+  background-color: #F6F7FC;
+  border-color: white;
+}
+
+.p-color {
+  margin-bottom: 5px;
+  font-size: 13px;
+  color: #4d4d4d;
+
+}
+
+.job-image {
+  height: 80px;
+  width: 80px;
+}
+
+.date-color {
+  background-color: #f2f2f2;
+  padding: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 3px;
+}
+
+.apply-button {
+  position: relative;
+  top: 47px;
+  height: 40px;
+  padding-block-start: 2px;
+  padding-block-end: 2px;
+}
+
+.apply-button1 {
+  position: relative;
+  top: 35px;
+  height: 54px;
+  padding-block-start: 2px;
+  padding-block-end: 2px;
+}
+
+.apply-button2 {
+  position: relative;
+  top: 62px;
+  width: 122px;
+  padding: 5px;
+}
+
+.s-color {
+  color: #a6a6a6;
+}
+
+.s-left {
+  position: relative;
+  left: 52px;
+}
+
+.s-left1 {
+  position: relative;
+  left: 47px;
+}
+
+.s-left2 {
+  position: relative;
+  left: 21px;
+}
+
+.modal-dialog {
+  max-width: 500px !important;
+}
+
+.company-image {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}

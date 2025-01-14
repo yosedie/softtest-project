@@ -1,0 +1,183 @@
+/** Certificate CSS */
+
+/* css for side menu start */
+.vertical-menu {
+  width: 200px;
+}
+
+.vertical-menu a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc;
+}
+
+.vertical-menu a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* css for side menu end */
+
+/* css for certificate design start */
+
+.cirtificate-border-one {
+  font-family: "Times New Roman", Times, serif;
+  border: 15px solid;
+  border-top-color: #40444a;
+  border-right-color: #0284a2;
+  border-bottom-color: #0284a2;
+  border-left-color: #40444a;
+  padding: 20px;
+  background-color: #fff;
+
+}
+
+.cirtificate-border-one-sub {
+  font-family: "Times New Roman", Times, serif;
+  border: 7px solid;
+  border-top-color: #0284a2;
+  border-right-color: #40444a;
+  border-bottom-color: #40444a;
+  border-left-color: #0284a2;
+  padding: 20px;
+  background-color: #fff;
+  margin-top: -29px;
+  margin-left: -29px;
+  margin-bottom: -29px;
+  margin-right: -29px;
+
+}
+
+.cirtificate-border-two {
+  border: 2px solid #0284a2;
+  padding: 20px;
+}
+
+.cirtificate-border-two-sub {
+  border: 2px solid #0284a2;
+  padding: 20px;
+  margin-top: -26px;
+  margin-left: -26px;
+  margin-bottom: -26px;
+  margin-right: -26px;
+}
+
+.cirtificate-heading {
+  font-size: 50px;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.cirtificate-detail {
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.cirtificate-instructor {
+  font-family: 'Great Vibes';
+  font-style: normal;
+  font-size: 20px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cirtificate-logo img {
+  width: 125px;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.box-body img {
+  height: 39px;
+}
+
+/* css for certificate design end */
+
+/* toggle button setting start */
+/* The switch - the box around the slider */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.text-red{
+  color : red;
+}
+
+.font-30px{
+  font-size:30px;
+}
+
+.font-25px{
+  font-size:25px;
+}
+
+/* toggle button setting end  */

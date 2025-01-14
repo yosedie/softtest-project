@@ -1,0 +1,91 @@
+/** edit.css **/
+
+.back {
+  background-color: #F6F7FC;
+  border-color: white;
+}
+
+.bord {
+  background-color: white;
+  border-color: #bbdbe7;
+  transition: 0.5s;
+}
+
+.blog-home-main-block {
+  height: 100px;
+  padding: 22px 22px;
+  font-size: 40px;
+  color: white;
+}
+
+.name {
+  font-size: 25px;
+}
+.resume-edit-main-block {
+  padding: 80px 0;
+}
+.resume-edit-page .resume-left-sidebar-block {
+  background-color: var(--background-blue-bg-color);
+  padding: 30px;
+  height: 100%;
+}
+
+.resume-left-sidebar-block label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-white-color);
+}
+.resume-edit-page .form-control {
+  height: 45px;
+  font-size: 14px;
+  border: inherit;
+  padding: 12px;
+}
+.resume-edit-page #size {
+  height: 45px !important;
+}
+.resume-edit-page .custom-file-label {
+  height: 45px;
+  padding: 11px 12px !important;
+  border: inherit;
+}
+.resume-edit-page .custom-file-label::after {
+  height: 45px;
+  padding: 11px !important;
+}
+.resume-right-sidebar-block {
+  background-color: var(--background-grey-bg-color);
+  padding: 30px;
+  height: 100%;
+}
+.resume-right-sidebar-block label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-black-color);
+}
+.resume-right-title {
+  color: var(--text-red-color);
+}
+.resume-right-sidebar-block .btn-outline-primary {
+  background-color: var(--background-blue-bg-color);
+  padding: 11px;
+  color: #FFF;
+  border: 1px solid var(--background-blue-bg-color);
+  width: 50px;
+}
+.resume-left-textarea {
+  position: relative;
+}
+.resume-left-textarea svg.feather {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 12px 10px 0;
+}
+.resume-left-textarea textarea {
+  padding: 11px 0 11px 40px !important;
+}
+.submit-btn .btn-primary {
+  padding: 10px 20px;
+  border-radius: 6px;
+}

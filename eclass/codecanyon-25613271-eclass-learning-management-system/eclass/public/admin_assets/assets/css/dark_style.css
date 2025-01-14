@@ -1,0 +1,273 @@
+@charset "UTF-8";
+
+@import url("https://fonts.googleapis.com/css?family=Mukta+Vaani:200,300,400,500,600,700,800&display=swap");
+
+:root {
+  --bg_black_color: #000;
+  --bg_blue_color: #125875;
+
+  --text_dark_blue_color: #125875;
+}
+
+/* 
+--------------------------------
+    : Custom - General css :
+--------------------------------
+*/
+
+
+body.dark-mode {
+  font-family: "Mukta Vaani", sans-serif;
+  margin: 0;
+  background: var(--bg_black_color);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-grey-color);
+  line-height: 1.5;
+}
+.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
+  color: var(--text_white_color);
+}
+.dark-mode .topbar {
+  background-color: var(--bg_black_color);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode .sidebar-two.leftbar {
+  background: var(--bg_black_color);
+}
+.dark-mode .card {
+  background-color: var(--bg_black_color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode .card-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode .footerbar {
+  background-color: var(--bg_black_color);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode .breadcrumbbar .page-title {
+  color: var(--text_white_color);
+}
+.dark-mode .nav-tabs .nav-link.active {
+  background-color: var(--bg_blue_color);
+}
+.dark-mode .nav-tabs .nav-link:hover {
+  background-color: var(--bg_blue_color); 
+}
+.dark-mode .nav-tabs .nav-link {
+  border-radius: 4px;
+  color: var(--text_white_color);
+  border: inherit;
+}
+.dark-mode .text-dark {
+  color: var(--text_white_color) !important;
+}
+.dark-mode .bg-info-rgba {
+  background-color: inherit !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode .input-group-text {
+  border: inherit;
+}
+.dark-mode .bg-primary {
+  background-color: var(--bg_blue_color) !important;
+}
+.dark-mode small {
+  vertical-align: text-top;
+}
+.dark-mode .btn-danger-rgba {
+  background-color: #f9616d;
+  color: var(--text_white_color);
+}
+.dark-mode .btn-primary-rgba {
+  background-color: var(--bg_blue_color);
+  color: var(--text_white_color);
+}
+.dark-mode .form-control {
+  background-color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode .accordion>.card h2 .btn-link.collapsed {
+  color: var(--text_white_color);
+}
+.dark-mode a {
+  color: var(--text_white_color);
+}
+.dark-mode a:hover {
+  color: var(--text_dark_blue_color);
+}
+.dark-mode .dark-light-mode .toggle-container {
+  background-color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode .dark-light-mode .toggle-container:hover {
+ background-color: var(--text_dark_blue_color);
+ border: 1px solid var(--text_dark_blue_color);
+}
+.dark-mode .ai-tool-block {
+  background-color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode .ai-tool-block:hover {
+  background-color: var(--text_dark_blue_color);
+  border: 1px solid var(--text_dark_blue_color);
+}
+.dark-mode .notifybar {
+  background-color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode .notifybar:hover {
+  background-color: var(--text_dark_blue_color);
+  border: 1px solid var(--text_dark_blue_color);
+}
+.dark-mode .profilename h5 {
+  color: var(--text_black_color);
+}
+.dark-mode .topbar .infobar .languagebar a:hover {
+  color: var(--text_white_color);
+}
+.dark-mode .profilebar a.dropdown-toggle:hover {
+  color: var(--text_white_color);
+}
+.dark-mode .table thead th {
+  color: var(--text_white_color);
+}
+.dark-mode .nav-pills .nav-link.active {
+  background-color: var(--bg_blue_color);
+}
+.dark-mode .nav-pills .nav-link:hover {
+  background-color: var(--bg_blue_color);
+  color: var(--text_white_color);
+}
+.dark-mode .nav-pills .nav-link {
+  color: var(--text_white_color);
+}
+.dark-mode .btn-outline-primary {
+  border: 1px solid var(--bg_blue_color);
+  color: var(--text_dark_blue_color);
+}
+.dark-mode .btn-outline-primary:hover {
+  color: var(--text_white_color);
+}
+.dark-mode .select2-container--default .select2-selection--single {
+  background-color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode .mce-panel {
+  background-color: inherit !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode .mce-stack-layout-item {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode .table-bordered td {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+  background-color: inherit;
+}
+.dark-mode .dataTables_wrapper label {
+  color: #FFF;
+}
+.dark-mode .page-item.disabled .page-link {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode label {
+  color: var(--text_white_color) !important;
+}
+.dark-mode .mce-tinymce #tinymce {
+  background-color: inherit;
+}
+.dark-mode .mce-statusbar .mce-container-body {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode .mce-menubar .mce-menubtn {
+  background: inherit !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+.dark-mode .mce-btn {
+  background: inherit !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+.dark-mode .mce-menubar {
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+.dark-mode .dropdown-menu {
+  background-color: var(--bg_black_color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode .dropdown-menu .dropdown-item {
+  color: var(--text_white_color);
+}
+.dark-mode .dropdown-menu .dropdown-item:hover {
+  color: var(--text_white_color);
+  background-color: #125875;
+}
+.dark-mode .dropdown-menu .dropdown-item:active {
+  color: var(--text_white_color);
+  background-color: #125875;
+}
+.dark-mode .userbox .profile-icon {
+  color: var(--text_white_color);
+}
+.dark-mode .topbar .infobar .languagebar .dropdown-menu a:hover {
+  color: var(--text_white_color);
+}
+.dark-mode .btn-primary-rgba:hover {
+  color: var(--text_white_color);
+}
+.dark-mode .dt-buttons .btn-secondary {
+  background-color: inherit;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.dark-mode .dt-buttons .btn-secondary:hover {
+  background-color: var(--bg_blue_color);
+  border-color: var(--bg_blue_color);
+  color: #FFF;
+}
+.dark-mode .partial-course-main-block {
+  background-color: inherit;
+}
+.dark-mode .partial-course-status li a {
+  color: var(--text_white_color) !important;
+}
+.dark-mode .partial-course-img .card-footer .text-primary {
+  color: var(--text_white_color) !important;
+}
+.dark-mode .page-item .page-link {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-mode .select2-container--default .select2-selection--multiple {
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background-color: var(--bg_black_color) !important;
+}
+.dark-mode .offcanvas-menu {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: var(--bg_black_color);
+}
+.dark-mode  .offcanvas-menu .nav-pills .nav-link {
+  background-color: var(--bg_black_color);
+}
+.dark-mode .offcanvas-menu .nav-pills .nav-link.active {
+  background-color: var(--bg_blue_color);
+  border: 1px solid var(--bg_blue_color);
+}
+.dark-mode .ai-text-result {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: var(--bg_black_color);
+}
+.dark-mode .offcanvas-menu form input {
+  color: var(--text-grey-color);
+}
+.dark-mode .ai-title img {
+  filter: invert(1);
+}
+.dark-mode .menu-close i {
+  color: var(--text_white_color);
+}
+.dark-mode .input-group-text {
+  background: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+}

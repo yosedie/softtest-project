@@ -1,0 +1,192 @@
+/** Forum UI default CSS */
+.profile-info-block .form-group .btn-primary {
+  padding: 6px 12px;
+  font-size: 16px;
+  background-color: #506fe4 !important;
+  border-color: #506fe4 !important;
+}
+
+.profile-info-block .switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 22px;
+}
+
+.profile-info-block .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.profile-info-block .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.profile-info-block .slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 1px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.profile-info-block input:checked+.slider {
+  background-color: #0284A2;
+}
+
+.profile-info-block input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+.profile-info-block input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.profile-info-block .slider.round {
+  border-radius: 34px;
+}
+
+.profile-info-block .slider.round:before {
+  border-radius: 50%;
+}
+
+.profile-info-block .card-img-top {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.blog-link .btn-primary-rgba {
+  padding: 0;
+  font-size: 15px;
+}
+
+.blog-link a i {
+  margin-right: 0;
+  vertical-align: middle;
+  margin-top: 0;
+}
+
+.blog-link a:hover i {
+  margin-right: 0;
+}
+
+.blog-meta ul li {
+  font-size: 14px;
+}
+
+.chat-head {
+  margin-bottom: 50px;
+}
+
+.img-circle1 {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.media-body h5 {
+  margin-bottom: 10px;
+}
+
+.media-body .btn-link {
+  padding: 0;
+  border: inherit;
+}
+
+.chat-head1 .btn-link {
+  border: inherit;
+}
+
+.btn-link .fa-ellipsis-h {
+  font-size: 16px;
+  color: #0056B3;
+}
+
+.chat-head1 .dropdown-menu-right {
+  top: 10px !important;
+  left: 15px !important;
+  width: 100px;
+  padding: 15px 10px;
+}
+
+.chat-head1 .dropdown-menu-right:before {
+  top: 0;
+}
+
+.img-circle1 {
+  height: 51px;
+  width: 47px;
+  border-radius: 50%;
+}
+
+.chat-detail .chat-head2 {
+  padding: 15px 0 0 140px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.chat-head1 {
+  padding-left: 50px;
+}
+
+.profile-info-block .card {
+  margin-bottom: 30px;
+}
+
+.modal-footer .btn-secondary {
+  padding: 6px 20px;
+}
+
+.modal-footer .btn-primary {
+  padding: 6px 20px;
+}
+
+.dashboard-items ul li .btn-link {
+  border: transparent;
+  padding: 0;
+}
+
+.badge-success {
+  margin-top: 10px;
+}
+
+.chat-head1 {
+  margin-top: 18px;
+}
+
+.comment-form {
+  margin-top: 50px;
+}
+
+.pagination {
+  margin-left: 133px;
+}
+
+.chat-head2 .dropdown-menu-right {
+  top: 10px !important;
+  left: 15px !important;
+  width: 70px;
+  padding: 15px 10px;
+}
+
+.chat-head2 .dropdown-menu-right:before {
+  top: 0;
+}
+
+.btn-link-one {
+  margin-top: -60px;
+}

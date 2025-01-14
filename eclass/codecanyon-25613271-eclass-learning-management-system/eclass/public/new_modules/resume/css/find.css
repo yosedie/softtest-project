@@ -1,0 +1,64 @@
+/** find.css **/
+.title {
+  margin-bottom: 5px;
+}
+
+.back {
+  background-color: #F6F7FC;
+  border-color: white;
+}
+
+.p-color {
+  margin-bottom: 5px;
+  font-size: 13px;
+  color: #4d4d4d;
+
+}
+
+.job-image {
+  height: 80px;
+  width: 80px;
+}
+
+.date-color {
+  background-color: #f2f2f2;
+  padding: 1px;
+  padding-right: 10px;
+  border-radius: 3px;
+}
+
+.card:hover {
+  box-shadow: 2px 2px 2px 2px rgba(162, 227, 241, 0.2);
+}
+
+.card {
+  border-color: #e4f4fa;
+  transition: 0.3s;
+
+}
+
+.verfied {
+  height: 20px;
+  width: 20px;
+}
+
+.blog-home-main-block {
+  height: 100px;
+  padding: 15px 15px;
+  font-size: 40px;
+  color: white;
+
+}
+
+.company-image {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
+.submit_button {
+  height: 30px;
+  border-radius: 2px;
+  background-color: #99ccff;
+  border: #99ccff;
+}

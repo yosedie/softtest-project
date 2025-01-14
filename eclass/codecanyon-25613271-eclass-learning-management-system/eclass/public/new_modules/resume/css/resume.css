@@ -1,0 +1,81 @@
+/**  resume css **/
+.search-icon .btn-primary {
+    padding: 6px 20px;
+    border-radius: 0 5px 5px 0;
+}
+
+.search-icon .form-control {
+    border-radius: 5px 0 0 5px;
+}
+
+.resume-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.resume-image1 {
+    width: 80px;
+    height: 80px;
+    border-radius: 10%;
+}
+
+.search-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 10%;
+}
+
+.typeahead {
+    width: 585px;
+}
+
+.experience-title {
+    margin-bottom: 10px;
+}
+
+.modal-dialog {
+    max-width: 1000px !important;
+}
+
+.submit-btn {
+    padding-top: 200px;
+}
+
+textarea.form-con {
+    height: 30px;
+}
+
+.download-btn {
+    padding-top: 50px;
+}
+
+.download-btn .btn-primary {
+    background-color: #17a2b8 !important;
+}
+
+.paginate-resume {
+    width: 200px;
+}
+
+.text-font {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.text-font {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.admin_model {
+    width: 30%;
+}
+
+.search-color {
+    background-color: rgb(115, 176, 201);
+}
+
+.search-color:hover {
+    background-color: rgb(8, 117, 160);
+}

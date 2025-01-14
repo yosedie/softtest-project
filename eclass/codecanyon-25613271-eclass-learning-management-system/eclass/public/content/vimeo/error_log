@@ -1,0 +1,38 @@
+[29-Oct-2023 11:33:19 Europe/Athens] PHP Fatal error:  Uncaught Vimeo\Exceptions\VimeoRequestException: Unable to complete request. [SSL certificate problem: unable to get local issuer certificate] in /home/tibi/public_html/ht/uvp/start/content/vimeo/src/Vimeo/Vimeo.php:529
+Stack trace:
+#0 /home/tibi/public_html/ht/uvp/start/content/vimeo/src/Vimeo/Vimeo.php(151): Vimeo\Vimeo->_request()
+#1 /home/tibi/public_html/ht/uvp/start/content/vimeo/data.php(54): Vimeo\Vimeo->request()
+#2 {main}
+  thrown in /home/tibi/public_html/ht/uvp/start/content/vimeo/src/Vimeo/Vimeo.php on line 529
+[29-Oct-2023 11:33:32 Europe/Athens] PHP Fatal error:  Uncaught Vimeo\Exceptions\VimeoRequestException: Unable to complete request. [SSL certificate problem: unable to get local issuer certificate] in /home/tibi/public_html/ht/uvp/start/content/vimeo/src/Vimeo/Vimeo.php:529
+Stack trace:
+#0 /home/tibi/public_html/ht/uvp/start/content/vimeo/src/Vimeo/Vimeo.php(151): Vimeo\Vimeo->_request()
+#1 /home/tibi/public_html/ht/uvp/start/content/vimeo/data.php(54): Vimeo\Vimeo->request()
+#2 {main}
+  thrown in /home/tibi/public_html/ht/uvp/start/content/vimeo/src/Vimeo/Vimeo.php on line 529
+[29-Oct-2023 11:33:36 Europe/Athens] PHP Fatal error:  Uncaught Vimeo\Exceptions\VimeoRequestException: Unable to complete request. [SSL certificate problem: unable to get local issuer certificate] in /home/tibi/public_html/ht/uvp/start/content/vimeo/src/Vimeo/Vimeo.php:529
+Stack trace:
+#0 /home/tibi/public_html/ht/uvp/start/content/vimeo/src/Vimeo/Vimeo.php(151): Vimeo\Vimeo->_request()
+#1 /home/tibi/public_html/ht/uvp/start/content/vimeo/data.php(54): Vimeo\Vimeo->request()
+#2 {main}
+  thrown in /home/tibi/public_html/ht/uvp/start/content/vimeo/src/Vimeo/Vimeo.php on line 529
+[29-Oct-2023 11:40:08 Europe/Athens] PHP Fatal error:  Uncaught Vimeo\Exceptions\VimeoRequestException: Unable to complete request. [SSL certificate problem: unable to get local issuer certificate] in /home/tibi/public_html/ht/uvp/start/content/vimeo/src/Vimeo/Vimeo.php:529
+Stack trace:
+#0 /home/tibi/public_html/ht/uvp/start/content/vimeo/src/Vimeo/Vimeo.php(151): Vimeo\Vimeo->_request()
+#1 /home/tibi/public_html/ht/uvp/start/content/vimeo/data.php(59): Vimeo\Vimeo->request()
+#2 {main}
+  thrown in /home/tibi/public_html/ht/uvp/start/content/vimeo/src/Vimeo/Vimeo.php on line 529
+[29-Oct-2023 11:45:39 Europe/Athens] PHP Fatal error:  Uncaught Vimeo\Exceptions\VimeoRequestException: Unable to complete request. [SSL certificate problem: unable to get local issuer certificate] in /home/tibi/public_html/ht/uvp/start/content/vimeo/src/Vimeo/Vimeo.php:529
+Stack trace:
+#0 /home/tibi/public_html/ht/uvp/start/content/vimeo/src/Vimeo/Vimeo.php(151): Vimeo\Vimeo->_request()
+#1 /home/tibi/public_html/ht/uvp/start/content/vimeo/data.php(59): Vimeo\Vimeo->request()
+#2 {main}
+  thrown in /home/tibi/public_html/ht/uvp/start/content/vimeo/src/Vimeo/Vimeo.php on line 529
+[29-Oct-2023 11:52:08 Europe/Athens] PHP Fatal error:  Uncaught Error: Class "Vimeo\Vimeo" not found in /home/tibi/public_html/ht/uvp/start/content/vimeo/data.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/tibi/public_html/ht/uvp/start/content/vimeo/data.php on line 39
+[29-Oct-2023 11:52:11 Europe/Athens] PHP Fatal error:  Uncaught Error: Class "Vimeo\Vimeo" not found in /home/tibi/public_html/ht/uvp/start/content/vimeo/data.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/tibi/public_html/ht/uvp/start/content/vimeo/data.php on line 39

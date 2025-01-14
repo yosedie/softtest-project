@@ -1,0 +1,13 @@
+/** download.css **/
+
+.back {
+  padding: 8px 0;
+}
+.back .bg-info img {
+  width: 80px;
+  height: 80px;
+}
+
+.border{
+  border-color: #99ccff;
+}

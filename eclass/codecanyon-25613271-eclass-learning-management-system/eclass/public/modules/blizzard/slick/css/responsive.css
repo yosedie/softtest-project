@@ -1,0 +1,56 @@
+@media only screen and (max-width: 480px) {
+    .header-title h1,.title-txt h2,.news-letter h2,.txt h2{
+        font-size: 32px;
+        line-height: 42px;;
+    }
+    
+    input#search::placeholder,input#mail::placeholder{
+        font-family: 'rubikregular';
+        font-size: 14px;
+        
+    }
+    .news-letter input[type="submit"],input#mail{
+        height: 50px;
+        padding: 0 18px;
+    }
+  }
+
+
+  @media only screen and (max-width:767px){
+    .news-letter {
+         margin-top: 415px;
+     
+  }
+    input#search{
+        width: 100%;
+        height: 50px;
+        padding: 0 18px;
+  }
+  .position-relative form:after{
+      right: 75px;
+      height: 40px;
+  }
+  svg#srch-icon{
+      right: 15px;
+      top: 12px;
+  }
+}
+
+
+@media only screen and (max-width:991px){
+    .header-banner1 span:after{
+        display: none;
+    } 
+}
+@media only screen and (max-width: 1199px) {
+    a.nav-link.pseudo-icon:after,.copy-ryt:after{
+        display: none;
+    }
+    .course-tabs a.nav-link{
+        margin: 5px 6px;
+        justify-content: left;
+    }
+    .footer-bg:after{
+        width: 100%;
+    }
+  }

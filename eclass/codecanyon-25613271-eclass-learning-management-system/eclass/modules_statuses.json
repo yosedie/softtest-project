@@ -1,0 +1,21 @@
+{
+    "AuthorizeNet": true,
+    "Bkash": true,
+    "Certificate": true,
+    "Chatboard": true,
+    "DPOPayment": true,
+    "Ebook": true,
+    "Esewa": true,
+    "Forum": true,
+    "Googleclassroom": true,
+    "Homework": true,
+    "Onepay": true,
+    "Paytab": true,
+    "Resume": true,
+    "Smanager": true,
+    "Upi": true,
+    "SquarePay": true,
+    "Worldpay": true,
+    "Midtrains": true,
+    "MPesa": true
+}

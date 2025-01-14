@@ -1,0 +1,376 @@
+
+.cb-round {
+    border-radius: 50% !important;
+}
+.vertical-menu {
+    background: #FFFFFF;
+    padding: 20px;
+}
+body {
+    background-color: #F2F3F7;
+}
+.vertical-menu>li.active {
+    background: #FFF;
+}
+.vertical-menu {
+    height: calc(113vh - 100px);
+}
+.vertical-menu-icon {
+    background: #333;
+}
+.vertical-menu-detail {
+    border-right: none;
+}
+.card {
+    border-radius: 5px;
+}
+.vertical-menu-detail {
+    background: #FFFFFF;
+}
+.profilechoose {
+    height: 250px;
+    object-fit: scale-down;
+}
+.profilechoosebanner{
+    height: 380px;
+    width: 100%;
+    object-fit: cover;
+}
+.breadcrumbbar {
+    margin: 76x 0px 20px 0px !important;
+}
+
+label{
+    color:black;
+}
+.redstar{ 
+    color:red;
+}
+.gray-color{
+    background-color:gray;
+}
+.img-circle{
+    height:100px; 
+    position:relative;
+    width:100px;
+    border-radius:6px;
+}
+.card-sub-title {
+    margin-top: 30px;
+}
+.card-block {
+    padding: 20px;
+}
+.image_size{
+     height:100px;
+     width:100px;
+}
+.instructor{
+    list-style-type: none; 
+    line-height:200%;
+}
+.text-color{
+    color:black;
+}
+.duplicate .btn {
+    padding: 0 !important;
+}
+.img-cousre{
+    height:50px;
+    width:50px;
+}
+.img-circle1{
+   height:50px;
+   width:50px;
+   border-radius:50%;
+}
+.img-cousre{
+    height:50px;
+    width:50px;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 58px;
+    height: 28px
+}
+.switch input[type=checkbox] {
+    display: none
+}
+.switch input:checked+.knob {
+    animation: colorChange .4s linear forwards
+}
+.switch input:checked+.knob:before {
+    animation: turnON .4s linear forwards
+}
+@keyframes colorChange {
+    from {
+        background-color: #ccc
+    }
+    50% {
+        background-color: #a4d9ad
+    }
+    to {
+        background-color: #4bd663
+    }
+}
+@keyframes turnON {
+    from {
+        transform: translateX(0)
+    }
+    to {
+        transform: translateX(30.4px)
+    }
+}
+.knob {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 40px;
+    margin-right: 0 !important;
+}
+.knob:before {
+    position: absolute;
+    background-color: #fff;
+    content: "";
+    left: 4px;
+    top: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%
+}
+#datatable-buttons_length {
+    display: inline-block;
+    margin-right: 60px;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 5px !important;
+}
+/* Track */
+::-webkit-scrollbar-track {
+box-shadow: inset 0 0 5px rgba(80, 111, 228, 0.1) !important; 
+border-radius: 10px !important;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: rgba(80, 111, 228, 0.1) !important; 
+border-radius: 10px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #506fe4 !important; 
+}
+.form-card-input[type=checkbox]:checked, [type=checkbox]:not(:checked) {
+    z-index: 9;
+}
+.form-card-input:checked ~ .card {
+    border: 2px solid #506fe4;
+}
+.width-25 {
+    width: 25px;
+}
+.height-25 {
+    height: 25px;
+}
+.l-30 {
+    left: 30px;
+}
+.t-13 {
+    top: 13px;
+}
+.width-15 {
+    width: 15px;
+}
+.height-15 {
+    height: 15px;
+}
+.t-3 {
+    top: 3px;
+}
+.topbar {
+    z-index: 99;
+}
+.card-img-block {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 70px;
+}
+
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+}
+.overlay-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 250px;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.card-user-img {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    bottom: 45%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.card-user-img img {
+    border-radius: 100%;
+}
+.filter{
+    float: left;
+
+}
+.header{
+    
+    text-transform: uppercase !important;
+    padding: 5px;
+    /* padding: 5px 0px; */
+    color: #a1a8ae;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    font-weight: 600;
+    margin: 15px 0 !important;
+    color: black;
+}
+.progress {
+    background-color: #5b5d6657;
+}
+.action-icon {
+    width: inherit;
+    height: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    border-radius: inherit;
+    font-size: inherit;
+    text-align: inherit;
+}
+.user-slider .slick-slide .action-icon img {
+    width: 100px;
+    height: 100px;
+    font-weight: 600;
+    border-radius: 100%;
+    font-size: 20px;
+    text-align: center;
+}
+.user-slider .slick-slide .action-icon.badge-primary-inverse {
+    background-color: inherit;
+}
+.user-slider .slick-slide .action-icon {
+    width: inherit;
+    height: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    border-radius: inherit;
+    font-size: inherit;
+    text-align: inherit;
+    margin-bottom: inherit;
+    margin-top: inherit;
+}
+
+.infobar-settings-sidebar .infobar-settings-sidebar-body .custom-mode-setting {
+    padding: 15px 30px;
+    border-top: inherit;
+    border-bottom: inherit;
+}
+.custom-mode-setting .form-group {
+    margin-bottom: 0;
+}
+
+.switchery {
+    margin-bottom: 0;
+}
+#infobar-settings-close img {
+    width: 20px;
+    height: 20px;
+    filter: invert(0.6) sepia(1) saturate(14) hue-rotate(215deg);
+}
+.infobar-settings-sidebar #infobar-settings-close.btn-primary {
+    background-color: inherit;
+    border-color: inherit;
+    padding: 0;
+    text-align: right;
+}
+.infobar-settings-sidebar .close {
+    line-height: 2.5;
+}
+
+.dropdown.dropbtn {
+    float: right;
+    margin-top: -105px;
+}
+img#original {
+    height: 100px;
+}
+img#original1 {
+    height: 100px;
+}
+#cardimg{
+  height: 143px;
+}
+.mediapagination {
+    margin-left: 480px;
+}
+.navbar-form input {
+    position: relative;
+    padding: 5px 15px;
+    border-radius: 3px 0 0 3px;
+    border: 1px solid #FFF;
+    color: #8A98AC;
+}
+.navbar-form input::placeholder {
+    color: #8A98AC;
+}
+.navbar-form i {
+    background-color: #FFF;
+    padding: 10px;
+    border-radius: 0 3px 3px 0;
+}
+button.search-button {
+    border: none;
+    padding: 0;
+}
+
+.field_icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}
+.icondashboard{
+    font-size:55px;
+}
+
+.dt-buttons {
+    position:relative;
+    left:140px;
+}
+#datatable-buttons_length {
+    display: inline-block;
+    
+}
+
+.dt-buttons {
+    position: relative;
+    right: 140px;
+}
+
+.button-align {
+    float: left !important;
+}

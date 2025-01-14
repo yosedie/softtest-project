@@ -1,0 +1,157 @@
+.back {
+  background-color: #F6F7FC;
+  border-color: white;
+}
+
+.bord {
+  background-color: var(--background-grey-bg-color);
+  border-color: var(--background-grey-bg-color);
+  transition: 0.5s;
+  border-radius: 6px;
+}
+
+.blog-home-main-block {
+  height: 100px;
+  padding: 22px 22px;
+  font-size: 40px;
+  color: white;
+}
+
+.name {
+  font-size: 25px;
+}
+
+.title {
+  margin-bottom: 5px;
+}
+
+.back {
+  background-color: #F6F7FC;
+  border-color: white;
+}
+
+.top {
+  border-color: white;
+}
+
+.button a:hover {
+  color: var(--text-blue-color);
+  background-color: #F6F7FC;
+  border-left: 3px solid var(--text-blue-color);
+}
+
+.p-color {
+  margin-bottom: 5px;
+  font-size: 13px;
+  color: #4d4d4d;
+}
+
+.button a {
+  color: #716E6E;
+  padding: 28px 0 15px;
+
+}
+
+#size {
+  padding-block-start: 2px;
+  padding-block-end: 2px;
+  height: 42px;
+}
+
+.card {
+  border-color: #e4f4fa;
+  transition: 0.3s;
+
+}
+
+.job1-image {
+  height: 150px;
+  width: 150px;
+}
+
+.date-color {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 20px;
+}
+.date-color svg.feather {
+  color: #28A745;
+}
+.applicants {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 20px;
+}
+
+.apply-button {
+  position: relative;
+  top: 50px;
+  height: 40px;
+  padding-block-start: 2px;
+  padding-block-end: 2px;
+}
+
+.delete-color {
+  background-color: #ed684a;
+  border-color: #d84012;
+
+}
+
+.delete-color:hover {
+  background-color: #fa4700;
+  border-color: #e05924;
+
+}
+
+.modal-dialog {
+  max-width: 300px !important;
+}
+
+.edit_button {
+  background-color: rgb(128, 211, 193);
+  border-color: rgb(128, 211, 193);
+
+}
+
+.edit_button:hover {
+  background-color: rgb(128, 211, 193);
+  border-color: rgb(128, 211, 193);
+}
+
+.download-button {
+  font-size: 25px;
+}
+
+.modal-dialog {
+  max-width: 750px !important;
+}
+
+.job-show-main-block {
+  padding: 80px 0;
+}
+.card {
+  border-color: var(--background-grey-bg-color);
+  background-color: var(--background-grey-bg-color);
+  border-radius: 6px;
+}
+.job-show-main-block svg.feather {
+  margin: 0 10px 0 0;
+}
+.job-show-main-block .fa-money {
+  color: #ff7350 !important;
+  font-size: 16px;
+}
+.job-show-main-block .table .btn {
+  background-color: var(--background-white-bg-color);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  padding: 3px;
+}
+.job-show-main-block .table .btn svg.feather {
+  margin: 0;
+}
+.job-show-main-block .table {
+  border: 1px solid #dee2e6;
+}
