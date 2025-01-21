@@ -34,24 +34,24 @@
   ),
   'barryvdh/laravel-debugbar' => 
   array (
-    'providers' => 
-    array (
-      0 => 'Barryvdh\\Debugbar\\ServiceProvider',
-    ),
     'aliases' => 
     array (
       'Debugbar' => 'Barryvdh\\Debugbar\\Facades\\Debugbar',
     ),
+    'providers' => 
+    array (
+      0 => 'Barryvdh\\Debugbar\\ServiceProvider',
+    ),
   ),
   'berkayk/onesignal-laravel' => 
   array (
-    'providers' => 
-    array (
-      0 => 'Berkayk\\OneSignal\\OneSignalServiceProvider',
-    ),
     'aliases' => 
     array (
       'OneSignal' => 'Berkayk\\OneSignal\\OneSignalFacade',
+    ),
+    'providers' => 
+    array (
+      0 => 'Berkayk\\OneSignal\\OneSignalServiceProvider',
     ),
   ),
   'beyondcode/laravel-dump-server' => 
@@ -221,13 +221,13 @@
   ),
   'laravel/socialite' => 
   array (
-    'providers' => 
-    array (
-      0 => 'Laravel\\Socialite\\SocialiteServiceProvider',
-    ),
     'aliases' => 
     array (
       'Socialite' => 'Laravel\\Socialite\\Facades\\Socialite',
+    ),
+    'providers' => 
+    array (
+      0 => 'Laravel\\Socialite\\SocialiteServiceProvider',
     ),
   ),
   'laravel/tinker' => 
@@ -458,13 +458,13 @@
   ),
   'spatie/laravel-ignition' => 
   array (
-    'providers' => 
-    array (
-      0 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
-    ),
     'aliases' => 
     array (
       'Flare' => 'Spatie\\LaravelIgnition\\Facades\\Flare',
+    ),
+    'providers' => 
+    array (
+      0 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
     ),
   ),
   'spatie/laravel-image-optimizer' => 
