@@ -77,9 +77,7 @@ class TestContact:
         submit_button = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, '//*[@id="demo-form2"]/div/div[4]/div[2]/button'))
         )
-        # Scroll to the element using JavaScript
-        self.driver.execute_script("arguments[0].scrollIntoView(true);", submit_button)
-        # Click the button after scrolling it into view
+        self.scroll_to_element(submit_button)
         submit_button.click()
 
     def test_alert_message(self):
