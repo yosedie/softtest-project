@@ -51,4 +51,17 @@ class TestHome:
         )
         self.scroll_to_element(header)
         header.click
+    def test_ganti_currency(self):
+        currency_drop = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "/html/body/footer/div[1]/div/div/div[4]/div[2]/div[2]/div/a/i"))
+        )
+        self.scroll_to_element(currency_drop)
+        time.sleep(5)
+        currency_drop.click()
+        currency_choice = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.LINK_TEXT, "RWF"))
+        )
+        time.sleep(5)
+        currency_choice.click()
+        
         
