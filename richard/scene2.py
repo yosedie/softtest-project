@@ -26,41 +26,72 @@ def setup(request):
         
 @pytest.mark.usefixtures("setup")
 class TestContact:
-    def test_input(self):
-        emailInput= "dodo@gmail.com"
+    def scroll_to_element(self, element):
+        """Helper function to scroll to an element."""
+        self.driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element)
+        
+    def test_bukaContact(self):
+        contact_link = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.LINK_TEXT, "Contact"))
+        )
+        contact_link.click()
+        
+        time.sleep(5)
+        
+    def handle_cookies_banner(self):
+        cookies_button = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, ".js-cookie-consent-agree.cookie-consent__agree.cursor-pointer"))
+        )
+        cookies_button.click()
+
+ 
+        
+    def test_input_fields_and_submit(self):
+        email_input = "dodo@gmail.com"
+        phone_input = "123456788"
+        name_input = "richard"
+        message_input = "richard"
+
+        # Fill email
+        time.sleep(5)
         email_field = self.driver.find_element(By.ID, "email")
-        self.driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", email_field)
         time.sleep(5)
-        email_field.send_keys(emailInput)    
+        self.scroll_to_element(email_field)
+        email_field.send_keys(email_input)
         time.sleep(5)
-        
-        phoneInput= "123456788"
+
+        # Fill phone number
         phone_field = self.driver.find_element(By.ID, "mobile")
-        phone_field.send_keys(phoneInput)    
-        time.sleep(5)
-        
-        nameInput= "richard"
+        phone_field.send_keys(phone_input)
+
+        # Fill name
         name_field = self.driver.find_element(By.ID, "fname")
-        name_field.send_keys(nameInput)    
-        time.sleep(5)
+        name_field.send_keys(name_input)
         
-        submit_link = WebDriverWait(self.driver, 10).until(
+        message_field = self.driver.find_element(By.ID, "fname")
+        message_field.send_keys(message_input)
+        time.sleep(5)
+
+        # Submit form
+        submit_button = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.CLASS_NAME, "btn.ss-btn"))
         )
-        self.driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", submit_link)
         time.sleep(5)
-        submit_link.click()
+        self.scroll_to_element(submit_button)
+        submit_button.click()
         time.sleep(5)
-        
-    def test_alert(self):
-        alert=self.driver.find_element(By.CSS_SELECTOR, ".offset-md-3.col-md-offset-3.col-md-6.animated.fadeInDown.alert.alert-success")
-        self.driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", alert)
-        time.sleep(5)
-        if "Request Successfully" in alert.text:
-            print("The alert contains the expected text.")
-        else:
-            print("The expected text was not found in the alert.")
-        time.sleep(5)
-        
+
+    def test_alert_message(self):
+        # Wait for the alert to appear
+        alert = WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located(
+                (By.CSS_SELECTOR, ".offset-md-3.col-md-offset-3.col-md-6.animated.fadeInDown.alert.alert-success")
+            )
+        )
+        self.scroll_to_element(alert)
+
+        # Verify the alert text
+        alert_text = alert.text
+        assert "Request Successfully" in alert_text, f"Unexpected alert text: {alert_text}"
   
         
