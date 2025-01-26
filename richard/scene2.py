@@ -68,18 +68,19 @@ class TestContact:
         name_field = self.driver.find_element(By.ID, "fname")
         name_field.send_keys(name_input)
         
-        message_field = self.driver.find_element(By.ID, "fname")
+        message_field = self.driver.find_element(By.ID, "comment")
+        self.scroll_to_element(message_field)
         message_field.send_keys(message_input)
         time.sleep(5)
 
         # Submit form
         submit_button = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.CLASS_NAME, "btn.ss-btn"))
+            EC.element_to_be_clickable((By.XPATH, '//*[@id="demo-form2"]/div/div[4]/div[2]/button'))
         )
-        time.sleep(5)
-        self.scroll_to_element(submit_button)
+        # Scroll to the element using JavaScript
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", submit_button)
+        # Click the button after scrolling it into view
         submit_button.click()
-        time.sleep(5)
 
     def test_alert_message(self):
         # Wait for the alert to appear
