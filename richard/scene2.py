@@ -72,12 +72,12 @@ class TestContact:
         self.scroll_to_element(message_field)
         message_field.send_keys(message_input)
         time.sleep(5)
-
         # Submit form
         submit_button = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//*[@id="demo-form2"]/div/div[4]/div[2]/button'))
+            EC.element_to_be_clickable((By.XPATH, '/html/body/main/section[2]/div/div/div/div/form/div/div[4]/div[2]/button'))
         )
         self.scroll_to_element(submit_button)
+        time.sleep(5)
         submit_button.click()
 
     def test_alert_message(self):
