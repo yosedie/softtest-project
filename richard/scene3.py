@@ -34,13 +34,13 @@ class TestHome:
     def test_search(self):
         time.sleep(5)
         search_input = "web"
-        search_field = self.driver.find_element(By.ID, "email")
+        search_field = self.driver.find_element(By.CLASS_NAME, "searchTerm")
         time.sleep(5)
-        search_field.sendKeys(search_input)
+        search_field.send_keys(search_input)
         
         time.sleep(5)
         search_button = WebDriverWait(self.driver, 5).until(
-            EC.element_to_be_clickable((By.CLASS_NAME, "searchTerm"))
+            EC.element_to_be_clickable((By.CLASS_NAME, "searchButton"))
         )
         search_button.click()
         time.sleep(5)
