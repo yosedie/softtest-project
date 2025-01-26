@@ -30,6 +30,13 @@ class TestContact:
         """Helper function to scroll to an element."""
         self.driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element)
         
+    def test_handle_cookies_banner(self):
+        cookies_button = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, ".js-cookie-consent-agree.cookie-consent__agree.cursor-pointer"))
+        )
+        cookies_button.click()
+        time.sleep(5)
+ 
     def test_bukaContact(self):
         contact_link = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.LINK_TEXT, "Contact"))
@@ -38,13 +45,6 @@ class TestContact:
         
         time.sleep(5)
         
-    def handle_cookies_banner(self):
-        cookies_button = WebDriverWait(self.driver, 5).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, ".js-cookie-consent-agree.cookie-consent__agree.cursor-pointer"))
-        )
-        cookies_button.click()
-
- 
         
     def test_input_fields_and_submit(self):
         email_input = "dodo@gmail.com"
