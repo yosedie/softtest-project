@@ -17,6 +17,14 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+
+-- Create a new database called 'eclass_purchasecopy'
+-- Connect to the 'master' database to run this snippet
+CREATE DATABASE IF NOT EXISTS eclass_purchasecopy;
+
+-- Use the new database
+USE eclass_purchasecopy;
+
 --
 -- Database: `eclass_purchasecopy`
 --
