@@ -35,37 +35,34 @@ try:
     print("Login Successful: Dashboard Loaded")
     time.sleep(2)
 
+    # Tunggu hingga elemen dengan icon "Blog" tersedia
     try:
-        dropdownh = wait.until(EC.element_to_be_clickable((By.ID, "languagelink")))
-        # Klik dropdown untuk memilih bahasa
-        dropdownh.click()
-        time.sleep(1)
-        # Tunggu hingga opsi bahasa terlihat dan pilih bahasa baru (misalnya Hindi)
-        hindi_option = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Hindi (hi)")))
-        hindi_option.click()
-
-        dropdowne = wait.until(EC.element_to_be_clickable((By.ID, "languagelink")))
-        # Ganti kembali bahasa ke bahasa Inggris (en)
-        dropdowne.click()
-        time.sleep(1)
-        english_option = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "English (en)")))
-        english_option.click()
-
-        print("Bahasa berhasil diganti dan dikembalikan.")
-
-    except Exception as e:
-        print(f"Terjadi error: {e}")
-
-    try:
-        # Tunggu elemen tersedia
-        toggle_button = driver.find_element(By.ID, "modeSwitch1")
+        # Tunggu elemen link atau ikon yang sesuai
+        blog_link = wait.until(EC.presence_of_element_located((By.XPATH, "//a[@href='https://eclass.mediacity.co.in/demo/public/blog']")))
         
-        # Tekan elemen dua kali
-        toggle_button.click()
-        time.sleep(3)
-        toggle_button.click()
+        # Debugging untuk memeriksa elemen ditemukan atau tidak
+        print(blog_link.get_attribute('outerHTML'))
+        
+        # Klik elemen dengan JavaScript jika Selenium biasa tidak berhasil
+        driver.execute_script("arguments[0].click();", blog_link)
+        print("Berhasil menekan ikon Blog.")
+    except TimeoutException as e:
+        print("Timeout: Tidak menemukan elemen Blog.")
+    except Exception as e:
+        print(f"Error: {e}")
 
-        print("Berhasil menekan tombol dua kali.")
+    time.sleep(2)
+    try:
+        # Temukan semua tombol dalam div dengan class 'dt-buttons btn-group'
+        buttons = driver.find_elements(By.CSS_SELECTOR, "div.dt-buttons.btn-group a")
+
+        # Klik setiap tombol kecuali tombol "Print"
+        for button in buttons:
+            if "Print" not in button.text:  # Pastikan tombol bukan 'Print'
+                time.sleep(1)
+                button.click()
+                print(f"Tombol '{button.text}' berhasil ditekan.")
+
     except Exception as e:
         print(f"Terjadi error: {e}")
 

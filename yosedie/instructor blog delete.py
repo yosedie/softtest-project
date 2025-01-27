@@ -35,37 +35,47 @@ try:
     print("Login Successful: Dashboard Loaded")
     time.sleep(2)
 
+    # Tunggu hingga elemen dengan icon "Blog" tersedia
     try:
-        dropdownh = wait.until(EC.element_to_be_clickable((By.ID, "languagelink")))
-        # Klik dropdown untuk memilih bahasa
-        dropdownh.click()
-        time.sleep(1)
-        # Tunggu hingga opsi bahasa terlihat dan pilih bahasa baru (misalnya Hindi)
-        hindi_option = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Hindi (hi)")))
-        hindi_option.click()
+        # Tunggu elemen link atau ikon yang sesuai
+        blog_link = wait.until(EC.presence_of_element_located((By.XPATH, "//a[@href='https://eclass.mediacity.co.in/demo/public/blog']")))
+        
+        # Debugging untuk memeriksa elemen ditemukan atau tidak
+        print(blog_link.get_attribute('outerHTML'))
+        
+        # Klik elemen dengan JavaScript jika Selenium biasa tidak berhasil
+        driver.execute_script("arguments[0].click();", blog_link)
+        print("Berhasil menekan ikon Blog.")
+    except TimeoutException as e:
+        print("Timeout: Tidak menemukan elemen Blog.")
+    except Exception as e:
+        print(f"Error: {e}")
 
-        dropdowne = wait.until(EC.element_to_be_clickable((By.ID, "languagelink")))
-        # Ganti kembali bahasa ke bahasa Inggris (en)
-        dropdowne.click()
-        time.sleep(1)
-        english_option = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "English (en)")))
-        english_option.click()
+    time.sleep(2)
+    try:
+        # Temukan checkbox pertama berdasarkan ID atau atribut lainnya
+        checkbox = driver.find_element(By.CSS_SELECTOR, "input[type='checkbox'][id='checkbox10']")  # ID checkbox10
+        checkbox.click()  # Klik checkbox
 
-        print("Bahasa berhasil diganti dan dikembalikan.")
-
+        print("Checkbox berhasil diklik.")
     except Exception as e:
         print(f"Terjadi error: {e}")
 
     try:
-        # Tunggu elemen tersedia
-        toggle_button = driver.find_element(By.ID, "modeSwitch1")
-        
-        # Tekan elemen dua kali
-        toggle_button.click()
-        time.sleep(3)
-        toggle_button.click()
+        # Temukan tombol "Delete Selected"
+        delete_button = driver.find_element(By.CSS_SELECTOR, "button[data-target='#bulk_delete']")  # Selektor CSS berdasarkan data-target
+        delete_button.click()  # Klik tombol
+        time.sleep(1)
+        print("Tombol 'Delete Selected' berhasil diklik.")
+    except Exception as e:
+        print(f"Terjadi error: {e}")
 
-        print("Berhasil menekan tombol dua kali.")
+    try:
+        # Temukan tombol "Yes"
+        yes_button = driver.find_element(By.CSS_SELECTOR, "form#bulk_delete_form button.btn.btn-danger")
+        yes_button.click()  # Klik tombol "Yes"
+
+        print("Tombol 'Yes' berhasil diklik.")
     except Exception as e:
         print(f"Terjadi error: {e}")
 

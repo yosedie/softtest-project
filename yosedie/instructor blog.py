@@ -105,7 +105,7 @@ try:
         
         # Keluar dari iframe setelah mengisi deskripsi
         driver.switch_to.default_content()
-        
+        time.sleep(1)
         # Klik Tombol Create
         create_button = driver.find_element(By.XPATH, "//button[@type='submit' and contains(text(), 'Create')]")
         create_button.click()
@@ -118,12 +118,12 @@ try:
     # Menunggu agar dropdown benar-benar muncul
     profile_dropdown = wait.until(EC.visibility_of_element_located((By.XPATH, "//span[contains(text(),'Hi instructor')]")))
     # Menggunakan JavaScript untuk membuka dropdown
-    driver.execute_script("arguments[0].click();", profile_dropdown)
-
     time.sleep(2)
-
+    driver.execute_script("arguments[0].click();", profile_dropdown)
+    time.sleep(2)
     # Klik logout dengan JavaScript
     logout_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//a[contains(text(),'Logout')]")))
+    time.sleep(2)
     driver.execute_script("arguments[0].click();", logout_button)
     print("Logout Successful")
 
