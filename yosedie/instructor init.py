@@ -1,3 +1,4 @@
+import logging
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.edge.service import Service
@@ -5,89 +6,79 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
 import time
 
-# Setup WebDriver for Edge
-options = webdriver.EdgeOptions()
-service = Service(EdgeChromiumDriverManager().install())
-driver = webdriver.Edge(service=service, options=options)
+# Setup logging
+logging.basicConfig(filename='test_log1yosedie.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-url = "https://eclass.mediacity.co.in/demo/public/instructor"
+class WebTest:
+    def __init__(self):
+        # Setup WebDriver for Edge
+        options = webdriver.EdgeOptions()
+        service = Service(EdgeChromiumDriverManager().install())
+        self.driver = webdriver.Edge(service=service, options=options)
+        self.wait = WebDriverWait(self.driver, 30)
 
-try:
-    driver.get(url)
-    driver.maximize_window()
-    wait = WebDriverWait(driver, 20)
+    def save_screenshot(self, filename):
+        """Saves a screenshot if the test fails."""
+        timestamp = time.strftime("%Y%m%d-%H%M%S")
+        screenshot_path = f"{filename}_{timestamp}.png"
+        self.driver.save_screenshot(screenshot_path)
+        logging.info(f"Screenshot saved to {screenshot_path}")
 
-    # Login
-    email_field = wait.until(EC.presence_of_element_located((By.NAME, "email")))
-    password_field = wait.until(EC.presence_of_element_located((By.NAME, "password")))
-    email_field.send_keys("instructor@mediacity.co.in")
-    password_field.send_keys("123456")
+    def run_test(self):
+        url = "https://eclass.mediacity.co.in/demo/public/instructor"
+        try:
+            self.driver.get(url)
+            self.driver.maximize_window()
 
-    login_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@type='submit' and contains(@class, 'create-btn')]")))
-    login_button.click()
+            # Login
+            email_field = self.wait.until(EC.presence_of_element_located((By.NAME, "email"))).send_keys("instructor@mediacity.co.in")
+            password_field = self.wait.until(EC.presence_of_element_located((By.NAME, "password"))).send_keys("123456")
 
-    # Verify dashboard
-    wait.until(EC.visibility_of_element_located((By.XPATH, "//h4[contains(text(),'Instructor Dashboard')]")))
-    print("Login Successful: Dashboard Loaded")
-    time.sleep(2)
+            login_button = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@type='submit' and contains(@class, 'create-btn')]"))).click()
 
-    try:
-        dropdownh = wait.until(EC.element_to_be_clickable((By.ID, "languagelink")))
-        # Klik dropdown untuk memilih bahasa
-        dropdownh.click()
-        time.sleep(1)
-        # Tunggu hingga opsi bahasa terlihat dan pilih bahasa baru (misalnya Hindi)
-        hindi_option = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Hindi (hi)")))
-        hindi_option.click()
+            # Verify dashboard
+            self.wait.until(EC.visibility_of_element_located((By.XPATH, "//h4[contains(text(),'Instructor Dashboard')]")))
+            logging.info("Login Successful: Dashboard Loaded")
+            
+            # Language change test
+            dropdownh = self.wait.until(EC.element_to_be_clickable((By.ID, "languagelink"))).click()
+            hindi_option = self.wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Hindi (hi)"))).click()
 
-        dropdowne = wait.until(EC.element_to_be_clickable((By.ID, "languagelink")))
-        # Ganti kembali bahasa ke bahasa Inggris (en)
-        dropdowne.click()
-        time.sleep(1)
-        english_option = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "English (en)")))
-        english_option.click()
+            # Change back to English
+            dropdowne = self.wait.until(EC.element_to_be_clickable((By.ID, "languagelink"))).click()
+            english_option = self.wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "English (en)"))).click()
 
-        print("Bahasa berhasil diganti dan dikembalikan.")
+            logging.info("Language changed and reverted back successfully.")
 
-    except Exception as e:
-        print(f"Terjadi error: {e}")
+            # Toggle Button Test
+            toggle_button = self.wait.until(EC.element_to_be_clickable((By.ID, "modeSwitch1")))
+            toggle_button.click()
+            time.sleep(1)
+            toggle_button.click()
+            logging.info("Toggle button clicked twice successfully.")
 
-    try:
-        # Tunggu elemen tersedia
-        toggle_button = driver.find_element(By.ID, "modeSwitch1")
-        
-        # Tekan elemen dua kali
-        toggle_button.click()
-        time.sleep(3)
-        toggle_button.click()
+            # Logout process
+            profile_dropdown = self.wait.until(EC.visibility_of_element_located((By.XPATH, "//span[contains(text(),'Hi instructor')]")))
+            self.driver.execute_script("arguments[0].click();", profile_dropdown)
 
-        print("Berhasil menekan tombol dua kali.")
-    except Exception as e:
-        print(f"Terjadi error: {e}")
+            logout_button = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//a[contains(text(),'Logout')]")))
+            self.driver.execute_script("arguments[0].click();", logout_button)
+            logging.info("Logout Successful")
 
-    # Menunggu agar dropdown benar-benar muncul
-    profile_dropdown = wait.until(EC.visibility_of_element_located((By.XPATH, "//span[contains(text(),'Hi instructor')]")))
-    # Menggunakan JavaScript untuk membuka dropdown
-    time.sleep(1)
-    driver.execute_script("arguments[0].click();", profile_dropdown)
-    time.sleep(1)
-    # Klik logout dengan JavaScript
-    logout_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//a[contains(text(),'Logout')]")))
-    time.sleep(1)
-    driver.execute_script("arguments[0].click();", logout_button)
-    print("Logout Successful")
+        except TimeoutException as e:
+            logging.error(f"Timeout Error: {e}")
+            self.save_screenshot('timeout_error')
 
-except TimeoutException as e:
-    print(f"Timeout Error: {e}")
+        except Exception as e:
+            logging.error(f"Unexpected Error: {e}")
+            self.save_screenshot('unexpected_error')
 
-except Exception as e:
-    print(f"Unexpected Error: {e}")
+        finally:
+            time.sleep(2)
+            self.driver.quit()
 
-finally:
-    # Wait to observe the result (optional)
-    time.sleep(2)
-    driver.quit()
+# Initialize and run the test
+test = WebTest()
+test.run_test()

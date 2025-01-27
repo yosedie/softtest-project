@@ -1,103 +1,131 @@
+import logging
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
 import time
 
-# Setup WebDriver for Edge
-options = webdriver.EdgeOptions()
-service = Service(EdgeChromiumDriverManager().install())
-driver = webdriver.Edge(service=service, options=options)
+# Setup Logging
+logging.basicConfig(filename='test_log4yosedie.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-url = "https://eclass.mediacity.co.in/demo/public/instructor"
+class TestAutomation:
+    def __init__(self):
+        # Setup WebDriver for Edge
+        options = webdriver.EdgeOptions()
+        service = Service(EdgeChromiumDriverManager().install())
+        self.driver = webdriver.Edge(service=service, options=options)
 
-try:
-    driver.get(url)
-    driver.maximize_window()
-    wait = WebDriverWait(driver, 20)
+    def save_screenshot(self, filename):
+        """Saves a screenshot if the test fails."""
+        timestamp = time.strftime("%Y%m%d-%H%M%S")
+        screenshot_path = f"{filename}_{timestamp}.png"
+        self.driver.save_screenshot(screenshot_path)
+        logging.info(f"Screenshot saved to {screenshot_path}")
+    
+    def run_test(self):
+        url = "https://eclass.mediacity.co.in/demo/public/instructor"
 
-    # Login
-    email_field = wait.until(EC.presence_of_element_located((By.NAME, "email")))
-    password_field = wait.until(EC.presence_of_element_located((By.NAME, "password")))
-    email_field.send_keys("instructor@mediacity.co.in")
-    password_field.send_keys("123456")
+        try:
+            self.driver.get(url)
+            self.driver.maximize_window()
+            wait = WebDriverWait(self.driver, 20)
 
-    login_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@type='submit' and contains(@class, 'create-btn')]")))
-    login_button.click()
+            # Login
+            email_field = wait.until(EC.presence_of_element_located((By.NAME, "email")))
+            password_field = wait.until(EC.presence_of_element_located((By.NAME, "password")))
+            email_field.send_keys("instructor@mediacity.co.in")
+            password_field.send_keys("123456")
 
-    # Verify dashboard
-    wait.until(EC.visibility_of_element_located((By.XPATH, "//h4[contains(text(),'Instructor Dashboard')]")))
-    print("Login Successful: Dashboard Loaded")
-    time.sleep(2)
+            login_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@type='submit' and contains(@class, 'create-btn')]")))
+            login_button.click()
 
-    # Tunggu hingga elemen dengan icon "Blog" tersedia
-    try:
-        # Tunggu elemen link atau ikon yang sesuai
-        blog_link = wait.until(EC.presence_of_element_located((By.XPATH, "//a[@href='https://eclass.mediacity.co.in/demo/public/blog']")))
-        
-        # Debugging untuk memeriksa elemen ditemukan atau tidak
-        print(blog_link.get_attribute('outerHTML'))
-        
-        # Klik elemen dengan JavaScript jika Selenium biasa tidak berhasil
-        driver.execute_script("arguments[0].click();", blog_link)
-        print("Berhasil menekan ikon Blog.")
-    except TimeoutException as e:
-        print("Timeout: Tidak menemukan elemen Blog.")
-    except Exception as e:
-        print(f"Error: {e}")
+            # Verify dashboard
+            wait.until(EC.visibility_of_element_located((By.XPATH, "//h4[contains(text(),'Instructor Dashboard')]")))
+            logging.info("Login Successful: Dashboard Loaded")
+            time.sleep(2)
 
-    time.sleep(2)
-    try:
-        # Temukan checkbox pertama berdasarkan ID atau atribut lainnya
-        checkbox = driver.find_element(By.CSS_SELECTOR, "input[type='checkbox'][id='checkbox10']")  # ID checkbox10
-        checkbox.click()  # Klik checkbox
+            # Tunggu hingga elemen dengan icon "Blog" tersedia
+            try:
+                blog_link = wait.until(EC.presence_of_element_located((By.XPATH, "//a[@href='https://eclass.mediacity.co.in/demo/public/blog']")))
+                logging.info(f"Blog link found: {blog_link.get_attribute('outerHTML')}")
+                self.driver.execute_script("arguments[0].click();", blog_link)
+                logging.info("Berhasil menekan ikon Blog.")
+            except TimeoutException:
+                logging.error("Timeout: Tidak menemukan elemen Blog.")
+                self.save_screenshot("error_blog_link")
+            except Exception as e:
+                logging.error(f"Error: {e}")
+                self.save_screenshot("error_blog_link")
 
-        print("Checkbox berhasil diklik.")
-    except Exception as e:
-        print(f"Terjadi error: {e}")
+            time.sleep(2)
 
-    try:
-        # Temukan tombol "Delete Selected"
-        delete_button = driver.find_element(By.CSS_SELECTOR, "button[data-target='#bulk_delete']")  # Selektor CSS berdasarkan data-target
-        delete_button.click()  # Klik tombol
-        time.sleep(1)
-        print("Tombol 'Delete Selected' berhasil diklik.")
-    except Exception as e:
-        print(f"Terjadi error: {e}")
+            # Klik checkbox jika tersedia
+            try:
+                checkbox = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "td[tabindex='0'] input[type='checkbox']")))
+                checkbox.click()
+                logging.info("Checkbox berhasil diklik.")
+            except NoSuchElementException:
+                logging.error("Checkbox tidak ditemukan.")
+                self.save_screenshot("error_checkbox")
+            except Exception as e:
+                logging.error(f"Terjadi error: {e}")
+                self.save_screenshot("error_checkbox")
 
-    try:
-        # Temukan tombol "Yes"
-        yes_button = driver.find_element(By.CSS_SELECTOR, "form#bulk_delete_form button.btn.btn-danger")
-        yes_button.click()  # Klik tombol "Yes"
+            # Klik tombol "Delete Selected" jika tersedia
+            try:
+                delete_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[data-target='#bulk_delete']")))
+                delete_button.click()
+                time.sleep(1)
+                logging.info("Tombol 'Delete Selected' berhasil diklik.")
+            except NoSuchElementException:
+                logging.error("Tombol 'Delete Selected' tidak ditemukan.")
+                self.save_screenshot("error_delete_button")
+            except Exception as e:
+                logging.error(f"Terjadi error: {e}")
+                self.save_screenshot("error_delete_button")
 
-        print("Tombol 'Yes' berhasil diklik.")
-    except Exception as e:
-        print(f"Terjadi error: {e}")
+            # Klik tombol "Yes" untuk konfirmasi
+            try:
+                yes_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "form#bulk_delete_form button.btn.btn-danger")))
+                yes_button.click()
+                logging.info("Tombol 'Yes' berhasil diklik.")
+            except NoSuchElementException:
+                logging.error("Tombol 'Yes' tidak ditemukan.")
+                self.save_screenshot("error_yes_button")
+            except Exception as e:
+                logging.error(f"Terjadi error: {e}")
+                self.save_screenshot("error_yes_button")
 
-    # Menunggu agar dropdown benar-benar muncul
-    profile_dropdown = wait.until(EC.visibility_of_element_located((By.XPATH, "//span[contains(text(),'Hi instructor')]")))
-    # Menggunakan JavaScript untuk membuka dropdown
-    time.sleep(1)
-    driver.execute_script("arguments[0].click();", profile_dropdown)
-    time.sleep(1)
-    # Klik logout dengan JavaScript
-    logout_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//a[contains(text(),'Logout')]")))
-    time.sleep(1)
-    driver.execute_script("arguments[0].click();", logout_button)
-    print("Logout Successful")
+            # Logout
+            try:
+                profile_dropdown = wait.until(EC.visibility_of_element_located((By.XPATH, "//span[contains(text(),'Hi instructor')]")))
+                time.sleep(1)
+                self.driver.execute_script("arguments[0].click();", profile_dropdown)
+                time.sleep(1)
+                logout_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//a[contains(text(),'Logout')]")))
+                time.sleep(1)
+                self.driver.execute_script("arguments[0].click();", logout_button)
+                logging.info("Logout Successful")
+            except Exception as e:
+                logging.error(f"Terjadi error saat logout: {e}")
+                self.save_screenshot("error_logout")
 
-except TimeoutException as e:
-    print(f"Timeout Error: {e}")
+        except TimeoutException as e:
+            logging.error(f"Timeout Error: {e}")
+            self.save_screenshot("timeout_error")
 
-except Exception as e:
-    print(f"Unexpected Error: {e}")
+        except Exception as e:
+            logging.error(f"Unexpected Error: {e}")
+            self.save_screenshot("unexpected_error")
 
-finally:
-    # Wait to observe the result (optional)
-    time.sleep(2)
-    driver.quit()
+        finally:
+            # Wait to observe the result (optional)
+            time.sleep(2)
+            self.driver.quit()
+
+# Running the test
+test = TestAutomation()
+test.run_test()

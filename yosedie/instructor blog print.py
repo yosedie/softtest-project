@@ -1,3 +1,5 @@
+import logging
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.edge.service import Service
@@ -5,14 +7,22 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-import time
+
+# Setup Logging
+logging.basicConfig(filename='test_log3yosedie.log', level=logging.INFO)
+logger = logging.getLogger()
 
 # Setup WebDriver for Edge
 options = webdriver.EdgeOptions()
 service = Service(EdgeChromiumDriverManager().install())
 driver = webdriver.Edge(service=service, options=options)
+
+def save_screenshot(driver, filename):
+    """Saves a screenshot if the test fails."""
+    timestamp = time.strftime("%Y%m%d-%H%M%S")
+    screenshot_path = f"{filename}_{timestamp}.png"
+    driver.save_screenshot(screenshot_path)
+    logger.info(f"Screenshot saved to {screenshot_path}")
 
 url = "https://eclass.mediacity.co.in/demo/public/instructor"
 
@@ -32,57 +42,51 @@ try:
 
     # Verify dashboard
     wait.until(EC.visibility_of_element_located((By.XPATH, "//h4[contains(text(),'Instructor Dashboard')]")))
-    print("Login Successful: Dashboard Loaded")
+    logger.info("Login Successful: Dashboard Loaded")
     time.sleep(2)
 
-    # Tunggu hingga elemen dengan icon "Blog" tersedia
     try:
-        # Tunggu elemen link atau ikon yang sesuai
         blog_link = wait.until(EC.presence_of_element_located((By.XPATH, "//a[@href='https://eclass.mediacity.co.in/demo/public/blog']")))
-        
-        # Debugging untuk memeriksa elemen ditemukan atau tidak
-        print(blog_link.get_attribute('outerHTML'))
-        
-        # Klik elemen dengan JavaScript jika Selenium biasa tidak berhasil
+        logger.info(f"Blog link found: {blog_link.get_attribute('outerHTML')}")
         driver.execute_script("arguments[0].click();", blog_link)
-        print("Berhasil menekan ikon Blog.")
-    except TimeoutException as e:
-        print("Timeout: Tidak menemukan elemen Blog.")
+        logger.info("Successfully clicked on Blog icon.")
+    except TimeoutException:
+        logger.error("Timeout: Blog element not found.")
+        save_screenshot(driver, "blog_timeout")
     except Exception as e:
-        print(f"Error: {e}")
+        logger.error(f"Unexpected error: {e}")
+        save_screenshot(driver, "blog_error")
 
     time.sleep(2)
-    try:
-        # Temukan semua tombol dalam div dengan class 'dt-buttons btn-group'
-        buttons = driver.find_elements(By.CSS_SELECTOR, "div.dt-buttons.btn-group a")
 
-        # Klik setiap tombol kecuali tombol "Print"
+    try:
+        buttons = driver.find_elements(By.CSS_SELECTOR, "div.dt-buttons.btn-group a")
         for button in buttons:
-            if "Print" not in button.text:  # Pastikan tombol bukan 'Print'
+            if "Print" not in button.text:
                 time.sleep(1)
                 button.click()
-                print(f"Tombol '{button.text}' berhasil ditekan.")
-
+                logger.info(f"Successfully clicked on button: '{button.text}'")
     except Exception as e:
-        print(f"Terjadi error: {e}")
+        logger.error(f"Error clicking buttons: {e}")
+        save_screenshot(driver, "button_click_error")
 
-    # Menunggu agar dropdown benar-benar muncul
+    # Logout process
     profile_dropdown = wait.until(EC.visibility_of_element_located((By.XPATH, "//span[contains(text(),'Hi instructor')]")))
-    # Menggunakan JavaScript untuk membuka dropdown
     time.sleep(1)
     driver.execute_script("arguments[0].click();", profile_dropdown)
     time.sleep(1)
-    # Klik logout dengan JavaScript
     logout_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//a[contains(text(),'Logout')]")))
     time.sleep(1)
     driver.execute_script("arguments[0].click();", logout_button)
-    print("Logout Successful")
+    logger.info("Logout Successful")
 
 except TimeoutException as e:
-    print(f"Timeout Error: {e}")
+    logger.error(f"Timeout Error: {e}")
+    save_screenshot(driver, "timeout_error")
 
 except Exception as e:
-    print(f"Unexpected Error: {e}")
+    logger.error(f"Unexpected Error: {e}")
+    save_screenshot(driver, "unexpected_error")
 
 finally:
     # Wait to observe the result (optional)
