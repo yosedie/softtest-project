@@ -6,80 +6,128 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 from colorama import Fore, init
+import logging
 import os
+from datetime import datetime
 
 init()
 
+def setup_logging():
+    # Create logs directory if it doesn't exist
+    if not os.path.exists('logs'):
+        os.makedirs('logs')
+    
+    # Create timestamp for log filename
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    log_filename = os.path.join('logs', f'downloadInstructorInvolveRequest_{timestamp}.log')
+    
+    # Configure logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler(log_filename, encoding='utf-8'),
+            logging.StreamHandler()
+        ]
+    )
+    return log_filename
+
 def run_selenium_test():
-    service = Service('./chromedriver.exe')
+    log_filename = setup_logging()
+    logger = logging.getLogger(__name__)
+    logger.info(f"Starting Download PDF Instructor Involve Request test - Log file: {log_filename}")
+    try:
+        logger.info("Starting Download PDF Instructor Involve Request test")
+        service = Service('./chromedriver.exe')
 
-    current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    download_dir = os.path.join(current_dir, 'downloads')
-    os.makedirs(download_dir, exist_ok=True)
+        current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        download_dir = os.path.join(current_dir, 'downloads')
+        os.makedirs(download_dir, exist_ok=True)
+        logger.info("Creating \"downloads\" directory if not exist")
 
-    chrome_options = webdriver.ChromeOptions()
-    prefs = {
-        "download.default_directory": download_dir,  
-        "download.prompt_for_download": False,       
-        "download.directory_upgrade": True,          
-        "safebrowsing.enabled": True                 
-    }
-    chrome_options.add_experimental_option("prefs", prefs)
+        chrome_options = webdriver.ChromeOptions()
+        prefs = {
+            "download.default_directory": download_dir,  
+            "download.prompt_for_download": False,       
+            "download.directory_upgrade": True,          
+            "safebrowsing.enabled": True                 
+        }
+        chrome_options.add_experimental_option("prefs", prefs)
 
-    driver = webdriver.Chrome(service=service, options=chrome_options)
-    driver.maximize_window()
-    
-    driver.get('https://eclass.mediacity.co.in/demo2/public')
+        driver = webdriver.Chrome(service=service, options=chrome_options)
+        logger.info("Chrome driver initialized")
 
-    login_button = driver.find_element(By.XPATH, "//a[text()='Login']")
-    actions = ActionChains(driver)
-    actions.move_to_element(login_button).perform()
-    login_button.click()
+        driver.maximize_window()
+        driver.get('https://eclass.mediacity.co.in/demo2/public')
+        logger.info("Navigated to website")
 
-    email_field = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.NAME, "email"))
-    )
-    email_field.send_keys("admin@mediacity.co.in")
-    
-    password_field = driver.find_element(By.NAME, "password")
-    password_field.send_keys("123456")
+        login_button = driver.find_element(By.XPATH, "//a[text()='Login']")
+        actions = ActionChains(driver)
+        actions.move_to_element(login_button).perform()
+        login_button.click()
+        logger.info("Clicked login button")
 
-    decline_button = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.ID, "cookie-decline"))
-    )
-    decline_button.click()
-    
-    login_button = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//button[@type='submit' and contains(text(), 'Login')]"))
-    )
-    login_button.click()
+        email_field = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.NAME, "email"))
+        )
+        email_field.send_keys("admin@mediacity.co.in")
+        logger.info("Entered email")
+        
+        password_field = driver.find_element(By.NAME, "password")
+        password_field.send_keys("123456")
+        logger.info("Entered password")
 
-    actions = ActionChains(driver)
+        decline_button = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "cookie-decline"))
+        )
+        decline_button.click()
+        logger.info("Declined cookies")
+        
+        login_button = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//button[@type='submit' and contains(text(), 'Login')]"))
+        )
+        login_button.click()
+        logger.info("Submitted login form")
 
-    users_menu = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, "//a[contains(@class, 'menu')]/span[contains(text(), 'Instructors')]"))
-    )
-    actions.move_to_element(users_menu).click().perform()
-    
-    submenu = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.CSS_SELECTOR, "ul.vertical-submenu.menu-open"))
-    )
-    
-    multiple_instructor_dropdown = submenu.find_element(By.XPATH, ".//a[normalize-space()='Multiple Instructor']")
-    multiple_instructor_dropdown.click()
+        actions = ActionChains(driver)
 
-    request_involve_link = submenu.find_element(By.XPATH, ".//a[normalize-space()='Request to Involve']")
-    request_involve_link.click()
+        users_menu = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, "//a[contains(@class, 'menu')]/span[contains(text(), 'Instructors')]"))
+        )
+        actions.move_to_element(users_menu).click().perform()
+        logger.info("Clicked Instructors menu")
+        
+        submenu = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "ul.vertical-submenu.menu-open"))
+        )
+        logger.info("Submenu opened")
+        
+        multiple_instructor_dropdown = submenu.find_element(By.XPATH, ".//a[normalize-space()='Multiple Instructor']")
+        multiple_instructor_dropdown.click()
+        logger.info("Clicked multiple dropdown")
 
-    pdf_button = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//a[contains(@class, 'buttons-pdf')]/span[text()='PDF']"))
-    )
-    actions.move_to_element(pdf_button).click().perform()
-    sleep(2)
-    
-    print(Fore.GREEN + "File tersimpan di : ./downloads" + Fore.RESET)
+        request_involve_link = submenu.find_element(By.XPATH, ".//a[normalize-space()='Request to Involve']")
+        request_involve_link.click()
+        logger.info("Navigated to Request to Involve page")
 
-    driver.quit()
+        pdf_button = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//a[contains(@class, 'buttons-pdf')]/span[text()='PDF']"))
+        )
+        actions.move_to_element(pdf_button).click().perform()
+        logger.info("Clicked download PDF button")
+        sleep(2)
+        
+        print(Fore.GREEN + "File tersimpan di : ./downloads" + Fore.RESET)
+        logger.info("File tersimpan di : ./downloads")
+
+        driver.quit()
+        logger.info("Browser closed successfully")
+    except Exception as e:
+        logger.error(f"Error occurred: {str(e)}")
+        if 'driver' in locals():
+            driver.quit()
+            logger.info("Browser closed after error")
+        raise
 
 if __name__ == "__main__":
     run_selenium_test()
