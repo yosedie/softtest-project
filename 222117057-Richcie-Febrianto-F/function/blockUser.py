@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import ElementClickInterceptedException
 from time import sleep
 from colorama import Fore, init
 import random
@@ -136,16 +137,28 @@ def run_selenium_test():
         block_button.click()
         logger.info("Clicked block button")
 
-        WebDriverWait(driver, 10).until(
+        WebDriverWait(driver, 15, poll_frequency=0.5).until(
             EC.visibility_of_element_located((By.ID, "blockedModal33"))
         )
 
-        save_button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((
-                By.XPATH, "//div[@id='blockedModal33']//button[@class='btn btn-primary' and @title='Save']"
-            ))
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        driver.maximize_window()
+
+        try:
+            save_button = WebDriverWait(driver, 15).until(
+                EC.element_to_be_clickable((
+                    By.XPATH, "//div[@id='blockedModal33']//button[contains(., 'Save')]"
+                ))
+            )
+            save_button.click()
+        except ElementClickInterceptedException:
+            driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", save_button)
+            ActionChains(driver).move_to_element_with_offset(save_button, 5, 5).click().perform()
+
+        WebDriverWait(driver, 15).until(
+            lambda d: not d.find_element(By.ID, "blockedModal33").is_displayed() 
+            or d.execute_script("return document.readyState") == "complete"
         )
-        save_button.click()
         logger.info("Saved block action")
 
         success_message = "Successfully blocked user"
