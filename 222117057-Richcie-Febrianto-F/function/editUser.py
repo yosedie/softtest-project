@@ -112,22 +112,38 @@ def run_selenium_test():
         WebDriverWait(driver, 5).until(lambda d: d.execute_script("return (window.innerHeight + window.scrollY) >= document.body.scrollHeight"))
         logger.info("Scrolled to the bottom of the page")
 
-        settings_button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH,
-                "//tr[@role='row' and contains(@class, 'odd')]//button[@title='Settings']"
-            ))
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.ID, "test"))
         )
-        logger.info("Setting Button appeared & clickable")
+        logger.info("Table found")
 
-        action = ActionChains(driver)
-        action.move_to_element(settings_button).click().perform()
-        logger.info("Clicked setting button")
+        sleep(2)
+
+        try:
+            settings_button = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, "tbody tr:last-child td:last-child button[title='Settings']"))
+            )
+            driver.execute_script("arguments[0].click();", settings_button)
+            logger.info("Clicked settings button using title selector")
+        except:
+            buttons = WebDriverWait(driver, 10).until(
+                EC.presence_of_all_elements_located((By.CSS_SELECTOR, "button.btn-outline-primary"))
+            )
+            if buttons:
+                driver.execute_script("arguments[0].click();", buttons[-1])
+                logger.info("Clicked settings button using fallback method")
         
-        edit_option = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//a[@class='dropdown-item' and @title='Edit']"))
+        # First wait for dropdown to be visible
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "dropdown-menu"))
         )
-        edit_option.click()
-        logger.info("Navigated to Edit User page")
+        logger.info("Dropdown menu appeared")
+
+        edit_link = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "tr:last-child .dropdown-menu.show a[title='Edit']"))
+        )
+        driver.execute_script("arguments[0].click();", edit_link)
+        logger.info("Navigated to edit user page")
 
         sleep(3)
 

@@ -144,10 +144,10 @@ def run_selenium_test():
         logger.info("Submitted form")
 
         success_info = (
-            f"Edited instructor involvement request:\n"
-            f"Instructor name: {selected_text}\n"
-            f"Reason: Automated reason for involvement request.\n"
-            f"Toggle changes: Featured/Status switched"
+            f"Mengedit permintaan involvement instruktor :\n"
+            f"Nama instructor: {selected_text}\n"
+            f"Alasan : Automated reason for involvement request.\n"
+            f"Toggle (Featured / Status) : On -> Off / Off -> On"
         )
         logger.info(success_info)
 

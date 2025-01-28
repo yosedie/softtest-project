@@ -45,7 +45,22 @@ def run_selenium_test():
     try:
         logger.info("Starting Verify User test")
         service = Service('./chromedriver.exe')
-        driver = webdriver.Chrome(service=service)
+
+        current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        download_dir = os.path.join(current_dir, 'downloads')
+        os.makedirs(download_dir, exist_ok=True)
+        logger.info("Creating \"downloads\" directory if not exist")
+
+        chrome_options = webdriver.ChromeOptions()
+        prefs = {
+            "download.default_directory": download_dir,  
+            "download.prompt_for_download": False,       
+            "download.directory_upgrade": True,          
+            "safebrowsing.enabled": True                 
+        }
+        chrome_options.add_experimental_option("prefs", prefs)
+
+        driver = webdriver.Chrome(service=service, options=chrome_options)
         logger.info("Chrome driver initialized")
 
         driver.maximize_window()
@@ -132,6 +147,8 @@ def run_selenium_test():
         driver.implicitly_wait(1)
         driver.execute_script("arguments[0].click();", verify_button)
         logger.info("Clicked verify button")
+
+        sleep(2)
 
         driver.quit()
         logger.info("Browser closed successfully")
